@@ -1,0 +1,13 @@
+target/*
+videos/*
+.idea/
+*.iml
+firebase/*
+src/test/resources/dist/
+src/test/resources/init/
+src/test/resources/conf/
+src/test/resources/*.jar
+app/sportstf-firebase-adminsdk.json
+*.vscode/
+.env
+package-lock.json

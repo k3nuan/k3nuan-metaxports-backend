@@ -1,0 +1,25 @@
+{
+  "name": "sportstf-cdk",
+  "description": "Commands to deploy and destroy CloudFormation stacks",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "info": "IMPORTANT NOTE: Please make sure to replace any harcoded values like region, AWS account ID, etc. ",
+    "bootstrap": "cdk bootstrap --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=com.sports.stf.cdk.BootstrapApp\"",
+    "certificate:deploy": "cdk deploy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=com.sports.stf.cdk.CertificateApp\" --require-approval never",
+    "certificate:destroy": "cdk destroy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=com.sports.stf.cdk.CertificateApp\" --force --require-approval never",
+    "network:deploy": "cdk deploy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=com.sports.stf.cdk.NetworkApp\" -c environmentName=staging -c region=AWS_REGION -c accountId=123456789 --require-approval never",
+    "network:destroy": "cdk destroy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=com.sports.stf.cdk.NetworkApp\" -c environmentName=staging -c region=AWS_REGION -c accountId=123456789 --force --require-approval never",
+    "repository:deploy": "cdk deploy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=com.sports.stf.cdk.DockerRepositoryApp\" -c accountId=123456789 -c region=AWS_REGION -c applicationName=sportstf --require-approval never",
+    "repository:destroy": "cdk destroy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=com.sports.stf.cdk.DockerRepositoryApp\" --force -c accountId=123456789 -c region=AWS_REGION -c applicationName=sportstf --require-approval never",
+    "service:deploy": "cdk deploy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=com.sports.stf.cdk.ServiceApp\" -c springProfile=aws -c dockerImageUrl=DOCKER_IMAGE:latest -c applicationName=sportstf -c environmentName=staging -c region=AWS_REGION -c accountId=123456789 --require-approval never --all",
+    "service:destroy": "cdk destroy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=com.sports.stf.cdk.ServiceApp\" -c springProfile=aws -c dockerImageUrl=DOCKER_IMAGE:latest -c applicationName=sportstf -c environmentName=staging -c region=AWS_REGION -c accountId=123456789 --force --require-approval never --all",
+    "database:deploy": "cdk deploy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=com.sports.stf.cdk.DatabaseApp\" -c applicationName=sportstf -c environmentName=staging -c region=AWS_REGION -c accountId=123456789 --require-approval never",
+    "database:destroy": "cdk destroy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=com.sports.stf.cdk.DatabaseApp\" -c applicationName=sportstf -c environmentName=staging -c region=AWS_REGION -c accountId=123456789 --force --require-approval never",
+    "distribution:deploy": "cdk deploy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=com.sports.stf.cdk.DistributionApp\" -c applicationName=sportstf -c environmentName=staging -c region=AWS_REGION -c accountId=123456789 --require-approval never",
+    "distribution:destroy": "cdk destroy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=com.sports.stf.cdk.DistributionApp\" -c applicationName=sportstf -c environmentName=staging -c region=AWS_REGION -c accountId=123456789 --force --require-approval never"
+  },
+  "devDependencies": {
+    "aws-cdk": "1.126.0"
+  }
+}
